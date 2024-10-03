@@ -1,5 +1,4 @@
-
-# 用户信息表
+-- 用户信息表
 CREATE TABLE `user_info` (
 `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
 `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '用户唯一编号',
@@ -19,7 +18,7 @@ PRIMARY KEY (`id`),
 KEY `idx_code` (`code`) USING BTREE COMMENT '用户编号索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户信息表';
 
-# 问题表
+-- 问题表
 CREATE TABLE `question_info` (
 `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
 `question_desc` varchar(1024) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '问题描述',
@@ -31,7 +30,7 @@ CREATE TABLE `question_info` (
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='问题表';
 
-# 答案表
+-- 答案表
 CREATE TABLE `answer_info` (
 `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
 `question_id` bigint NOT NULL COMMENT '问题ID',
