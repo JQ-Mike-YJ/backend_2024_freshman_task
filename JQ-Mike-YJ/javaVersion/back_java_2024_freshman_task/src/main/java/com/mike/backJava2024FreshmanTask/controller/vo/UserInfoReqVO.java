@@ -22,12 +22,6 @@ public class UserInfoReqVO implements Serializable {
     /**
      * 用户唯一标识
      */
-    private String wxOpenId;
-
-    /**
-     * 报名会议标题
-     */
-    private String registerConferenceTitle;
-
+    private String userCode;
 
 }

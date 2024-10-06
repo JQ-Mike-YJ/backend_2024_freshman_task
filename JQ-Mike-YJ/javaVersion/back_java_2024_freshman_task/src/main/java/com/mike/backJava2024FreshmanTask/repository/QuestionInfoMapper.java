@@ -13,8 +13,6 @@ import java.util.List;
 public interface QuestionInfoMapper extends BaseMapper<QuestionInfo> {
     int deleteByPrimaryKey(Long id);
 
-    int insert(QuestionInfo record);
-
     int insertSelective(QuestionInfo record);
 
     QuestionInfo selectByPrimaryKey(Long id);

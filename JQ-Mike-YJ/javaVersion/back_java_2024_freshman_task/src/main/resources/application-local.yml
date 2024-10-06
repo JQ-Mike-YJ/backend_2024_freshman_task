@@ -1,0 +1,22 @@
+server:
+  port: 9050
+spring:
+  application:
+    name: back_java_2024_freshman_task
+  datasource:
+    name: user
+    url: jdbc:mysql://localhost:3306/question_answer
+    username: root
+    password: yangjin
+
+minio:
+  endpoint: http://127.0.0.1:9000
+  accessKey: admin
+  secretKey: adminyangjin
+  bucketName: conferenceregister
+
+
+# 打印 sql 日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

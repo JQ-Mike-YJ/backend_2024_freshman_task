@@ -23,6 +23,18 @@ public class UserInfoController {
     private UserInfoService userInfoService;
 
     /**
+     * 用户注册
+     *
+     * @param input 参数
+     * @return boolean
+     */
+    @PostMapping("/register")
+    public CommonReturnType register(@RequestBody @Validated UserInfoDTO input) throws BusinessException, Exception {
+
+        return CommonReturnType.create(userInfoService.register(input));
+    }
+
+    /**
      * 用户登录
      *
      * @param input 参数
@@ -55,7 +67,7 @@ public class UserInfoController {
     @PostMapping("/getUserInfo")
     public CommonReturnType getUserInfo(@RequestBody @Validated UserInfoReqVO input) throws BusinessException {
 
-        return CommonReturnType.create(userInfoService.getUserInfo(input.getWxOpenId()));
+        return CommonReturnType.create(userInfoService.getUserInfo(input.getUserCode()));
     }
 
 }

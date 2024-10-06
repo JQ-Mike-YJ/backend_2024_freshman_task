@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: local #本地环境
+#    active: dev #开发环境
+#    active: prod #生产环境

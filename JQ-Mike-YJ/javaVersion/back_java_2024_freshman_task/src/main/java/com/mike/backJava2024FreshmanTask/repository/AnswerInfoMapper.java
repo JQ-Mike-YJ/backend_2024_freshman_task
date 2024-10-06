@@ -12,8 +12,6 @@ import java.util.List;
 public interface AnswerInfoMapper extends BaseMapper<AnswerInfo> {
     int deleteByPrimaryKey(Long id);
 
-    int insert(AnswerInfo record);
-
     int insertSelective(AnswerInfo record);
 
     AnswerInfo selectByPrimaryKey(Long id);

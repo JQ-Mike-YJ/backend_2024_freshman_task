@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mike.backJava2024FreshmanTask.repository.AnswerInfoMapper">
+    <resultMap id="BaseResultMap" type="com.mike.backJava2024FreshmanTask.entity.AnswerInfo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="question_id" jdbcType="BIGINT" property="questionId"/>
+        <result column="answer" jdbcType="VARCHAR" property="answer"/>
+        <result column="is_perfect_answer" jdbcType="TINYINT" property="isPerfectAnswer"/>
+        <result column="weight" jdbcType="DECIMAL" property="weight"/>
+        <result column="creator_code" jdbcType="VARCHAR" property="creatorCode"/>
+        <result column="creator_name" jdbcType="VARCHAR" property="creatorName"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , question_id, answer, is_perfect_answer, weight, creator_code, creator_name, `status`,
+    create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from answer_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from answer_info
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mike.backJava2024FreshmanTask.entity.AnswerInfo"
+            useGeneratedKeys="true">
+        insert into answer_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="questionId != null">
+                question_id,
+            </if>
+            <if test="answer != null">
+                answer,
+            </if>
+            <if test="isPerfectAnswer != null">
+                is_perfect_answer,
+            </if>
+            <if test="weight != null">
+                weight,
+            </if>
+            <if test="creatorCode != null">
+                creator_code,
+            </if>
+            <if test="creatorName != null">
+                creator_name,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="questionId != null">
+                #{questionId,jdbcType=BIGINT},
+            </if>
+            <if test="answer != null">
+                #{answer,jdbcType=VARCHAR},
+            </if>
+            <if test="isPerfectAnswer != null">
+                #{isPerfectAnswer,jdbcType=TINYINT},
+            </if>
+            <if test="weight != null">
+                #{weight,jdbcType=DECIMAL},
+            </if>
+            <if test="creatorCode != null">
+                #{creatorCode,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mike.backJava2024FreshmanTask.entity.AnswerInfo">
+        update answer_info
+        <set>
+            <if test="questionId != null">
+                question_id = #{questionId,jdbcType=BIGINT},
+            </if>
+            <if test="answer != null">
+                answer = #{answer,jdbcType=VARCHAR},
+            </if>
+            <if test="isPerfectAnswer != null">
+                is_perfect_answer = #{isPerfectAnswer,jdbcType=TINYINT},
+            </if>
+            <if test="weight != null">
+                weight = #{weight,jdbcType=DECIMAL},
+            </if>
+            <if test="creatorCode != null">
+                creator_code = #{creatorCode,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorName != null">
+                creator_name = #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mike.backJava2024FreshmanTask.entity.AnswerInfo">
+        update answer_info
+        set question_id       = #{questionId,jdbcType=BIGINT},
+            answer            = #{answer,jdbcType=VARCHAR},
+            is_perfect_answer = #{isPerfectAnswer,jdbcType=TINYINT},
+            weight            = #{weight,jdbcType=DECIMAL},
+            creator_code      = #{creatorCode,jdbcType=VARCHAR},
+            creator_name      = #{creatorName,jdbcType=VARCHAR},
+            `status`          = #{status,jdbcType=TINYINT},
+            create_time       = #{createTime,jdbcType=TIMESTAMP},
+            update_time       = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="getAnswerList" resultType="com.mike.backJava2024FreshmanTask.entity.AnswerInfo">
+        select * from answer_info
+        where `status` = 1
+        and question_id = #{questionId}
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="creatorCode != null and creatorCode != ''">
+            and creator_code = #{creatorCode}
+        </if>
+    </select>
+</mapper>
